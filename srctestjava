@@ -1,2 +1,118 @@
 # Automation-MTT-UnidaddeRegistros
 # Se entiende como trámites para el transporte de personas, bajo las categorías Público, Escolar y Privado.
+//Automatización de Trámite de Unidad de Registros.
+//Cancelación de la Inscripción de un Servicio Inscrito en el Registro Nacional de Servicios de Transporte de Pasajeros.
+
+package MTTRegistroTramites;
+
+import static org.junit.Assert.*;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.JavascriptExecutor;
+
+public class MTTRegistroTramites {
+	
+	private WebDriver driver;
+	
+	//Ingreso a opción Acceder trámites de unidad de registro
+	
+	//By Acceder1	= By.xpath("//*[@id=\"content\"]/html/body/app-root/div/app-fullwidth-layout/div/app-home/div/div/div[1]/app-business-areas-cards/div/div[1]/div/div/a");
+	By Acceder1 = By.name("Acceder");
+	By BuscarTramite1= By.xpath("//*[@id=\"content\"]/div[2]/p-autocomplete/span/input");
+	By SelecCancelaServRNSTP= By.xpath("//*[@id=\"content\"]/html/body/div/ul/li[1]");
+	By IrTramiteUreg1 = By.xpath("//*[@id=\"content\"]/div[1]/html/body/div/ul/li[1]");
+	By IngresaRunUreg1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By IngresaTuClaveUreg1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By ContinuarUreg1CUnica	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By HeaderFormulario1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By RegionUreg1 = By.xpath("//*[@id=\"content\"]/app-service-identification/div/div[2]/div[1]/div/div[1]/span/p-dropdown/div/span");
+	By FolioUreg1 = By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By Email1Ureg1 = By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By Email2Ureg1 = By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By ComenzarUreg1 = By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By CheckAceptoTyCUreg1 = By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	//By AceptoTyCUreg1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	//By CierreTyCUreg1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By PagarUreg1 = By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By IrTGRUreg1 = By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	//By PagoOnLineUreg1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	//By SelecMedPagoUreg1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By IconoBcoVirtualUreg1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By PagarLineaVirtualUreg1	= By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By AutorzaPagoVirUreg1 = By.xpath("//*[@id=\"content\"]/div[1]/app-business-areas-cards/div/div[1]/div/div/a/");
+	By IngreseSuEmailUreg1 = By.xpath("//*[@id=\"id-form-mail-input\"]");
+	By BotonIngreseSuEmailUreg1 = By.xpath("//*[@id=\"id-div-mail-enviar\"]");
+	
+	
+	
+	@Before
+	public void setUp() throws Exception {
+		System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://liun.mtt.cl:15500/inicio");
+	}
+
+	
+	@Test
+	public void testtramites() {
+			
+		driver.findElement(Acceder1).click();
+		driver.findElement(BuscarTramite1).sendKeys("Cancelación de la Inscripción de un Servicio Inscrito en el Registro Nacional de Servicios de Transporte de Pasajeros");
+		driver.findElement(SelecCancelaServRNSTP).click();
+		driver.findElement(IrTramiteUreg1).click();
+		driver.findElement(IngresaRunUreg1).sendKeys("44.444.444-4");
+		driver.findElement(IngresaTuClaveUreg1).sendKeys("testing");
+		driver.findElement(ContinuarUreg1CUnica).click();
+		driver.findElement(HeaderFormulario1).sendKeys("Arnold Fuenzalida (8739608-8)");
+		driver.findElement(RegionUreg1).sendKeys("Región de Valparaíso");
+		driver.findElement(FolioUreg1).sendKeys("234");
+		driver.findElement(Email1Ureg1).sendKeys("carlos.gonzalez@social-it.cl");
+		driver.findElement(Email2Ureg1).sendKeys("carlos.gonzalez@social-it.cl");
+		driver.findElement(ComenzarUreg1).click();
+		driver.findElement(CheckAceptoTyCUreg1).click();
+		driver.findElement(PagarUreg1).click();
+		driver.findElement(IrTGRUreg1).click();
+		driver.findElement(IconoBcoVirtualUreg1).click();
+		driver.findElement(PagarLineaVirtualUreg1).click();
+		driver.findElement(AutorzaPagoVirUreg1).click();
+		driver.findElement(IngreseSuEmailUreg1).sendKeys("carlos.gonzalez@social-it.cl");
+		driver.findElement(BotonIngreseSuEmailUreg1).click();
+			
+				
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//assertEquals("quality-stream Introducción a la Automatización de Pruebas de Software - Google Search",driver.getTitle());
+	}
+	
+	/*@Test void localizadores() {
+		 
+		By locator = By.id("id_del_elemento");
+		By locator_name = By.name("name_elemnt");
+		By locator_className = By.className("clase_elemento");
+		By locator_tagName = By.tagName("tag");
+		By locator_linktext = By.linkText("texto_link");
+		By locator_partialLinkText = By.partialLinkText("parte_texto");
+		By locator_cssSelector = By.cssSelector("input[name='q']");
+		By locator_Xpath = By.xpath("//input[@name='q']");
+		
+		// JavaScript
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		 WebElement searchBox = (WebElement)js.executeScript("return document.getElementsByName('q')[0]");
+		
+	}*/
+	
+	@After
+	public void tearDown() {
+		//driver.quit();
+	}
+
+}
